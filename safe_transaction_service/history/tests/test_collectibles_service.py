@@ -57,7 +57,6 @@ class TestCollectiblesService(EthereumTestCaseMixin, TestCase):
 
             # Caches empty
             self.assertFalse(collectibles_service.cache_token_info)
-            self.assertFalse(collectibles_service.cache_uri_metadata)
 
             safe_address = "0xfF501B324DC6d78dC9F983f140B9211c3EdB4dc7"
             ens_address = "0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85"
@@ -190,7 +189,6 @@ class TestCollectiblesService(EthereumTestCaseMixin, TestCase):
 
             # Caches not empty
             self.assertTrue(collectibles_service.cache_token_info)
-            self.assertTrue(collectibles_service.cache_uri_metadata)
         finally:
             del EthereumClientProvider.instance
 

@@ -162,12 +162,9 @@ class CollectiblesService:
         self.redis = redis
         self.ens_service: EnsClient = EnsClient(self.ethereum_network.value)
 
-        self.cache_uri_metadata = TTLCache[str, Optional[Dict[str, Any]]](
-            maxsize=4096, ttl=self.COLLECTIBLE_EXPIRATION
-        )  # 1 day of caching
         self.cache_token_info: TTLCache[ChecksumAddress, Erc721InfoWithLogo] = TTLCache(
             maxsize=4096, ttl=self.TOKEN_EXPIRATION
-        )  # 2 hours of caching
+        )
 
     def get_redis_metadata_key(self, address: str, id: int):
         return f"metadata:{address}/{id}"
